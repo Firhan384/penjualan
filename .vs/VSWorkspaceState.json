@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\application",
+    "\\application\\controllers",
+    "\\application\\libraries",
+    "\\application\\modules",
+    "\\application\\modules\\customer",
+    "\\application\\modules\\customer\\controllers",
+    "\\application\\views",
+    "\\application\\views\\themes\\vegefoods"
+  ],
+  "SelectedNode": "\\application\\modules\\customer\\controllers\\Payments.php",
+  "PreviewInSolutionExplorer": false
+}
