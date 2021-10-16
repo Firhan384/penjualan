@@ -110,12 +110,14 @@ class Shop extends CI_Controller
                 }
 
                 $items = [];
+                $totalWeight = 0.0;
 
                 foreach ($this->cart->contents() as $item) {
                     $items[$item['id']]['qty'] = $item['qty'];
                     $items[$item['id']]['price'] = $item['price'];
+                    $totalWeight += ($this->product->get_weight_product_by_id($item['id']) * $items[$item['id']]['qty']);
                 }
-
+                
                 $subtotal = $this->cart->total();
                 $ongkir = (int) ($subtotal >= get_settings('min_shop_to_free_shipping_cost')) ? 0 : get_settings('shipping_cost');
                 $params['customer'] = $this->customer->data();
@@ -123,6 +125,7 @@ class Shop extends CI_Controller
                 $params['ongkir'] = ($ongkir > 0) ?  format_rupiah($ongkir) : 'Gratis';
                 $params['total'] = $subtotal - $discount;
                 $params['discount'] = $disc;
+                $params['weight'] = $totalWeight;
                 $params['city'] = json_decode(api('GET', 'city'));
 
 
@@ -297,7 +300,8 @@ class Shop extends CI_Controller
                 'valid' => true,
                 'body' => [
                     'ongkir' => $result->rajaongkir->results[0]->costs[0]->cost[0]->value,
-                    'estimate' => $result->rajaongkir->results[0]->costs[0]->cost[0]->etd
+                    'estimate' => $result->rajaongkir->results[0]->costs[0]->cost[0]->etd,
+                    'destination' => $post['cityDestination']
                 ]
             ]);
         } else {

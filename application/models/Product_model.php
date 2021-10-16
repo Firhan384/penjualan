@@ -12,6 +12,11 @@ class Product_model extends CI_Model {
         return $this->db->get('products')->result();
     }
 
+    public function get_weight_product_by_id($id)
+    {
+        return $this->db->select('weight')->from('products')->where('id', $id)->get()->row()->weight;
+    }
+
     public function best_deal_product()
     {
         $data = $this->db->where('is_available', 1)

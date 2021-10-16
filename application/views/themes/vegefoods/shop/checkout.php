@@ -62,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             if ($city->rajaongkir->status->code == 200 && $city->rajaongkir->status->description == "OK") :
                                                 foreach ($city->rajaongkir->results as $key => $value) :
                                             ?>
-                                                    <option value="<?= $value->city_id ?>"><?= $value->city_name ?></option>
+                                                    <option value="<?= $value->city_id ?>" data-destination="<?= $value->city_name ?>"><?= $value->city_name ?></option>
                                             <?php
                                                 endforeach;
                                             endif;
@@ -84,7 +84,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <div class="row">
                                     <div class="col">
                                         <label>Berat (KG)</label>
-                                        <input type="number" name="weight" class="form-control">
+                                        <input type="text" name="weight" class="form-control" value="<?= $weight ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
@@ -99,7 +99,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <h3 class="billing-heading mb-4">Pengiriman</h3>
                                 <p class="d-flex">
                                     <span>Tujuan</span>
-                                    <span>Rp <?php echo format_rupiah($subtotal); ?></span>
+                                    <span id="p_tujuan"></span>
                                 </p>
                                 <p class="d-flex">
                                     <span>Ongkos kirim</span>

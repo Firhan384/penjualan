@@ -180,6 +180,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   $("#btnCekOngkir").click(function() {
     const kurir = $("[name='kurir']").val();
     const destination = $("[name='destination']").val();
+    const cityDestination = $('#destination').find(':selected').attr('data-destination');
     const origin = $("[name='origin']").val();
     const weight = $("[name='weight']").val();
     const subtotal = $("[name='subtotal']").val();
@@ -187,6 +188,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
       courier: kurir,
       origin,
       destination,
+      cityDestination,
       weight
     };
 
@@ -206,6 +208,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           $("#ongkir").text((data.body.ongkir));
           $("#p_total").text(totalPrice);
           $("#r_total").text(totalPrice);
+          $("#p_tujuan").text(data.body.destination);
         } else {
           alert(data.message);
         }

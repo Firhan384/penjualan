@@ -47,7 +47,7 @@ function api($method, $endpoint, $data = [])
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS => "origin=456&destination=" . $data['origin'] . "&weight=" . $data['origin'] . "&courier=" . $data['courier'],
+                CURLOPT_POSTFIELDS => "origin=456&destination=" . $data['destination'] . "&weight=" . $data['weight'] . "&courier=" . $data['courier'],
                 CURLOPT_HTTPHEADER => array(
                     "content-type: application/x-www-form-urlencoded",
                     "key: " . KEY_API
